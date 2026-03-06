@@ -1,0 +1,153 @@
+we have to go according with theme picture i sent you multi page like you did with food pricing project
+
+
+AI Portfolio Builder – Landing Page Structure
+1. Hero Section
+
+Goal: Immediately explain the product.
+
+Headline
+
+Build Your Developer Portfolio in 30 Seconds
+
+Subtext
+
+Paste your GitHub profile and our AI generates a beautiful, professional portfolio website instantly.
+
+CTA Buttons
+
+Generate My Portfolio
+
+View Example
+
+Hero Visual Idea
+
+GitHub link → AI processing → portfolio website preview
+
+2. Social Proof
+
+Show trust early.
+
+Example
+
+12,000+ portfolios generated
+
+Used by developers from 50+ countries
+
+Logos
+
+GitHub
+
+Vercel
+
+Netlify
+
+3. How It Works
+
+Simple 3 step process.
+
+Step 1
+Paste your GitHub profile
+
+Step 2
+AI analyzes your repositories, skills, and projects
+
+Step 3
+Your portfolio is generated instantly
+
+4. Features Section
+
+Automatic Project Import
+Pulls your repositories and showcases them beautifully.
+
+AI Bio Generator
+Creates a professional developer bio.
+
+Multiple Themes
+Choose from modern developer-focused designs.
+
+Custom Domain
+Deploy instantly with your own domain.
+
+5. Portfolio Preview Section
+
+Show 3 example portfolios.
+
+Example cards:
+
+Minimal Developer Portfolio
+
+Dark Mode Portfolio
+
+Creative Designer Portfolio
+
+Each card → Live Preview button
+
+6. Benefits Section
+
+Save Time
+No coding required.
+
+Professional Design
+Modern UI optimized for recruiters.
+
+SEO Ready
+Your portfolio is optimized for search engines.
+
+7. Pricing Section
+
+Free Plan
+
+1 portfolio
+
+basic theme
+
+Pro Plan
+
+unlimited portfolios
+
+premium themes
+
+custom domain
+
+8. Testimonials
+
+Example quote:
+
+"I created my portfolio in under a minute. This saved me hours of work."
+— Frontend Developer
+
+9. Final CTA
+
+Headline
+
+Your Portfolio Is One Link Away
+
+Button
+Generate My Portfolio
+
+10. Footer
+
+Product
+
+Pricing
+
+Documentation
+
+Twitter / GitHub
+
+Contact
+
+Recommended Tech (since you like modern stack)
+
+Frontend
+
+Next.js
+
+Tailwind CSS
+
+Framer Motion
+
+Shadcn UI
+
+Lucide Icons
