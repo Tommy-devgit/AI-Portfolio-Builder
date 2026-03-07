@@ -20,6 +20,21 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Environment Variables
+
+Create `client/.env.local` and set:
+
+```bash
+GITHUB_TOKEN=your_github_token_optional
+OPENAI_API_KEY=your_openai_api_key_optional
+OPENAI_MODEL=gpt-4.1-mini
+```
+
+Notes:
+- `GITHUB_TOKEN` helps avoid GitHub rate limits.
+- `OPENAI_API_KEY` enables AI-generated portfolio bios through OpenAI's official API.
+- If `OPENAI_API_KEY` is missing or the request fails, the app automatically falls back to a deterministic bio.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
