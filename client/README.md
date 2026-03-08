@@ -1,3 +1,5 @@
+## AI PORTFOLIO GENERATOR
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
@@ -31,6 +33,7 @@ OPENAI_MODEL=gpt-4.1-mini
 ```
 
 Notes:
+
 - `GITHUB_TOKEN` helps avoid GitHub rate limits.
 - `OPENAI_API_KEY` enables AI-generated portfolio bios through OpenAI's official API.
 - If `OPENAI_API_KEY` is missing or the request fails, the app automatically falls back to a deterministic bio.
