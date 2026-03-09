@@ -30,6 +30,7 @@ Create `client/.env.local` and set:
 GITHUB_TOKEN=your_github_token_optional
 OPENAI_API_KEY=your_openai_api_key_optional
 OPENAI_MODEL=gpt-4.1-mini
+GITHUB_API_BASE_URL=https://api.github.com
 ```
 
 Notes:
@@ -37,6 +38,7 @@ Notes:
 - `GITHUB_TOKEN` helps avoid GitHub rate limits.
 - `OPENAI_API_KEY` enables AI-generated portfolio bios through OpenAI's official API.
 - If `OPENAI_API_KEY` is missing or the request fails, the app automatically falls back to a deterministic bio.
+- `GITHUB_API_BASE_URL` is optional; use it only if your network requires a GitHub API proxy endpoint.
 
 ## Learn More
 

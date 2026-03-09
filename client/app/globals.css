@@ -389,6 +389,36 @@ a {
   gap: 1rem;
 }
 
+.split-panel {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1.5fr 1fr;
+  align-items: start;
+}
+
+.kpi-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.stack-list {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.timeline-item {
+  border-left: 3px solid rgba(255, 150, 52, 0.35);
+}
+
+.plain-list {
+  margin: 0.5rem 0 0;
+  padding-left: 1.2rem;
+  color: var(--text-subtle);
+}
+
+.plain-list li + li {
+  margin-top: 0.35rem;
+}
+
 .avatar-wrap {
   border: 1px solid var(--line);
   border-radius: 1rem;
@@ -442,7 +472,9 @@ a {
   .stat-row,
   .card-grid.three,
   .card-grid.two,
-  .portfolio-hero {
+  .portfolio-hero,
+  .split-panel,
+  .kpi-grid {
     grid-template-columns: 1fr;
   }
 

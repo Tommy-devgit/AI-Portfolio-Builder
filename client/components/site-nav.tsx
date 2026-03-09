@@ -17,6 +17,7 @@ export default function SiteNav({
       <nav>
         <Link href="/features">Features</Link>
         <Link href="/examples">Examples</Link>
+        <Link href="/dashboard">Dashboard</Link>
         <Link href="/pricing">Pricing</Link>
         <Link href="/docs">Docs</Link>
       </nav>
