@@ -35,6 +35,20 @@ export type GithubPortfolioData = {
 
 const GITHUB_API = "https://api.github.com";
 const OPENAI_API = "https://api.openai.com/v1/responses";
+type GithubApiErrorPayload = { message?: string };
+
+class GithubApiError extends Error {
+  status: number;
+  remaining: string | null;
+  details: string;
+
+  constructor(status: number, details: string, remaining: string | null) {
+    super(`GitHub API request failed: ${status}`);
+    this.status = status;
+    this.remaining = remaining;
+    this.details = details;
+  }
+}
 
 function githubHeaders(): HeadersInit {
   const headers: HeadersInit = {
@@ -76,10 +90,56 @@ async function fetchGithub<T>(path: string): Promise<T> {
   });
 
   if (!response.ok) {
-    throw new Error(`GitHub API request failed: ${response.status}`);
+    const remaining = response.headers.get("x-ratelimit-remaining");
+    let details = "";
+
+    try {
+      const payload = (await response.json()) as GithubApiErrorPayload;
+      details = typeof payload.message === "string" ? payload.message : "";
+    } catch {
+      details = "";
+    }
+
+    throw new GithubApiError(response.status, details, remaining);
   }
 
   return (await response.json()) as T;
+}
+
+export function getGithubErrorMessage(error: unknown): string {
+  if (error instanceof GithubApiError) {
+    const details = error.details.toLowerCase();
+    const isRateLimited = error.remaining === "0" || details.includes("rate limit");
+
+    if (isRateLimited) {
+      return "GitHub API rate limit reached. Add a valid `GITHUB_TOKEN` in .env.local and try again.";
+    }
+    if (error.status === 404) {
+      return "GitHub user not found. Check the username and try again.";
+    }
+    if (error.status === 401) {
+      return "GitHub authentication failed. Verify your `GITHUB_TOKEN` value and retry.";
+    }
+    if (error.status === 403) {
+      return "GitHub denied the request. Check your token permissions or try again later.";
+    }
+
+    return `GitHub request failed (status ${error.status}). Please try again.`;
+  }
+
+  if (error instanceof Error && error.message === "Invalid GitHub username") {
+    return "Invalid GitHub username format.";
+  }
+
+  if (error instanceof TypeError && error.message.toLowerCase().includes("fetch failed")) {
+    return "Network request to GitHub failed. Check your internet connection and try again.";
+  }
+
+  if (error instanceof Error && error.message.trim().length > 0) {
+    return `Unexpected error: ${error.message}`;
+  }
+
+  return "Could not generate portfolio for this GitHub account.";
 }
 
 function buildGeneratedBioFallback(user: GithubUser, repos: GithubRepo[], topLanguage: string) {

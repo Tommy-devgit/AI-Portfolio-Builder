@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import SiteFooter from "@/components/site-footer";
 import SiteNav from "@/components/site-nav";
-import { getGithubPortfolioData } from "@/lib/github";
+import { getGithubErrorMessage, getGithubPortfolioData } from "@/lib/github";
 
 export const dynamic = "force-dynamic";
 
@@ -14,9 +14,12 @@ export default async function PortfolioPage({ params }: PortfolioPageProps) {
   const { username } = await params;
 
   let data;
+  let errorMessage = "";
   try {
     data = await getGithubPortfolioData(username);
-  } catch {
+  } catch (error) {
+    console.error("Portfolio generation failed:", error);
+    errorMessage = getGithubErrorMessage(error);
     return (
       <div className="page-wrap">
         <SiteNav ctaHref="/" ctaLabel="Back Home" />
@@ -24,9 +27,7 @@ export default async function PortfolioPage({ params }: PortfolioPageProps) {
           <section className="panel">
             <p className="eyebrow">Portfolio Error</p>
             <h1>Could not generate portfolio for this GitHub account</h1>
-            <p className="hero-subtext">
-              Check the username and try again. If rate-limited, add a `GITHUB_TOKEN` environment variable.
-            </p>
+            <p className="hero-subtext">{errorMessage}</p>
             <div className="hero-actions">
               <Link className="button solid" href="/">Try Another Profile</Link>
             </div>

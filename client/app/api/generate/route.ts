@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getGithubPortfolioData } from "@/lib/github";
+import { getGithubErrorMessage, getGithubPortfolioData } from "@/lib/github";
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
@@ -12,9 +12,10 @@ export async function GET(request: Request) {
   try {
     const data = await getGithubPortfolioData(username);
     return NextResponse.json(data);
-  } catch {
+  } catch (error) {
+    console.error("API generate failed:", error);
     return NextResponse.json(
-      { error: "Could not generate portfolio from this GitHub account" },
+      { error: getGithubErrorMessage(error) },
       { status: 400 },
     );
   }
