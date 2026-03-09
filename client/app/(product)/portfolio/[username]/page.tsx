@@ -2,7 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import SiteFooter from "@/components/site-footer";
 import SiteNav from "@/components/site-nav";
-import { getGithubErrorMessage, getGithubPortfolioData } from "@/lib/github";
+import { getGithubErrorMessage } from "@/lib/services/github.service";
+import { getGithubPortfolioData } from "@/lib/services/portfolio.service";
 
 export const dynamic = "force-dynamic";
 
@@ -126,3 +127,4 @@ export default async function PortfolioPage({ params }: PortfolioPageProps) {
     </div>
   );
 }
+

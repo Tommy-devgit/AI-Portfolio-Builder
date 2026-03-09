@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
-import { getGithubErrorMessage, getGithubPortfolioData } from "@/lib/github";
+import { getGithubErrorMessage } from "@/lib/services/github.service";
+import { getGithubPortfolioData } from "@/lib/services/portfolio.service";
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
